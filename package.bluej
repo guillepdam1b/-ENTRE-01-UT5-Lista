@@ -1,14 +1,14 @@
 #BlueJ package file
-dependency1.from=TestListaNumeros
+dependency1.from=GuiLista
 dependency1.to=ListaNumeros
 dependency1.type=UsesDependency
-dependency2.from=GuiLista
+dependency2.from=TestListaNumeros
 dependency2.to=ListaNumeros
 dependency2.type=UsesDependency
-editor.fx.0.height=0
-editor.fx.0.width=0
-editor.fx.0.x=0
-editor.fx.0.y=0
+editor.fx.0.height=737
+editor.fx.0.width=814
+editor.fx.0.x=187
+editor.fx.0.y=91
 objectbench.height=134
 objectbench.width=1512
 package.divider.horizontal=0.5572065378900446

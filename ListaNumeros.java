@@ -7,7 +7,7 @@
  * y dos  métodos estáticos para trabajar con
  * arrays de dos dimensiones
  *
- * @author -
+ * @author - Guillermo Polán
  */
 
 
@@ -19,10 +19,8 @@ public class ListaNumeros {
     public static final char CAR_CABECERA = '-';
 
     private static final Random generador = new Random();
-    //TODO
-    
-    
-
+    private int[] lista;
+    private int pos;
     /**
      * Constructor de la clase ListaNumeros
      * Crea e inicializa adecuadamente los
@@ -30,9 +28,9 @@ public class ListaNumeros {
      *
      * @param n el tamaño máximo de la lista
      */
-    public ListaNumeros() {
-        //TODO
-        
+    public ListaNumeros(int n) {
+        lista = new int[n];
+        pos=0;
     }
 
     /**
@@ -42,44 +40,48 @@ public class ListaNumeros {
      * @param numero el valor que se añade.  
      * @return true si se ha podido añadir, false en otro caso
      */
-    public void addElemento() {
-        //TODO
-        
-        
-
+    public boolean addElemento(int numero) {
+        pos=lista.length;
+        if(estaCompleta()==false){
+            lista[pos]=numero;
+        }
+        if(lista[pos]==numero){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     /**
      * @return true si la lista está completa, false en otro caso
      * Hacer sin if
      */
-    public void estaCompleta() {
-        //TODO
-
+    public boolean estaCompleta() {
+        return pos==lista.length;
     }
 
     /**
      * @return true si la lista está vacía, false en otro caso.
      * Hacer sin if
      */
-    public void estaVacia() {
-       //TODO
-
+    public boolean estaVacia() {
+       return pos!=lista.length;
     }
 
     /**
      * @return el nº de elementos realmente guardados en la lista
      */
-    public void getTotalNumeros() {
-        //TODO
-
+    public int getTotalNumeros() {
+        return lista.length;
     }
 
     /**
      * Vacía la lista
      */
-    public void vaciarLista() {
-       //TODO
+    public void vaciarLista(int n) {
+       lista = new int[n];
+       pos=0;
     }
 
     /**
@@ -89,9 +91,6 @@ public class ListaNumeros {
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-       //TODO
-       
-       
        
        return "";
     }
@@ -120,10 +119,31 @@ public class ListaNumeros {
      * No se puede usar ningún otro array auxiliar ni hay que ordenar previamente
      * la lista
      */
-    public void segundoMaximo() {       
-       //TODO
-
-        
+    public int segundoMaximo() {       
+       int primerMaximo=0;
+       int segundoMaximo=0;
+       int numero=0;
+       int numero2=0;
+       for(int i=0;i<lista.length;i++){
+           numero=lista[i];
+           if(numero>primerMaximo){
+               primerMaximo=numero;
+           }
+       }
+       
+       for(int i=0;i<lista.length;i++){
+           numero2=lista[i];
+           if(numero2>segundoMaximo && numero2<primerMaximo){
+               segundoMaximo=numero2;
+           }
+       }
+       
+       if(primerMaximo==segundoMaximo){
+           return Integer.MIN_VALUE;
+       }
+       else{
+           return segundoMaximo;
+       }
     }
 
     /**
@@ -144,10 +164,25 @@ public class ListaNumeros {
      *          false si no se han colocado los segundos máximos porque no había ninguno
      */
     public void segundosMaximosAlPrincipio() {
-        //TODO
-        
-        
-
+       int primerMaximo=0;
+       int segundoMaximo=0;
+       int numero=0;
+       int numero2=0;
+       for(int i=0;i<lista.length;i++){
+           numero=lista[i];
+           if(numero>primerMaximo){
+               primerMaximo=numero;
+           }
+       }
+       
+       for(int i=0;i<lista.length;i++){
+           numero2=lista[i];
+           if(numero2>segundoMaximo && numero2<primerMaximo){
+               segundoMaximo=numero2;
+           }
+       }
+       
+       lista[0]=segundoMaximo;
     }
 
     /**
@@ -160,11 +195,16 @@ public class ListaNumeros {
      *  
      * Usa exclusivamente métodos de la clase Arrays
      */
-    public void buscarBinario() {
-         //TODO
-         
-         
-
+    public int buscarBinario(int numero) {
+         int[] array2;
+         array2=lista;
+         int contador=0;
+         for(int i=0;i<array2.length;i++){
+             if(numero==array2[i]){
+                 contador++;
+             }
+         }
+         return contador;
     }
 
     /**
@@ -176,10 +216,12 @@ public class ListaNumeros {
      * 
      */
     public void crearBrillos() {
-       //TODO
-       
-       
-
+        int[][] array=new int[6][6];
+        for (int fila = 0; fila < array.length; fila++) {
+            for (int columna = 0; columna < array[fila].length; columna++) {
+                array[fila][columna] = (int) (Math.random() * 10 + 1);
+            }
+        }
     }
 
     /**
